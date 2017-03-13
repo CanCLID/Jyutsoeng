@@ -12,15 +12,15 @@ Pan has already elucidated the benefits of jyutsoeng in the original post. Just 
 The IME layout is based on the 26-key 小鶴雙拼 scheme for Mandarin Chinese and uses 38 keys, slightly more than Pan's original design, but saves the need to press the Shift key when typing. This is especially important for mobile devices because on mobile devices Shift key are usually pressed before the key to be combined with it (rather than simutaneously), which results in an extra key stroke and, needless to say, it is not what we hope to happen. Replacing Shift with long-press also requires extra time in typing and is not what we hope.
 
 Here are some points to note for the 38-key keyboard layout:
-- The syllable rhymes（韻母） are separated into two groups: those containing oe/eo/yu plus ip and im (group 1), and the rest(group 2)
-- To type a syllable with group 1 rhymes, you need to use a special set of keys to type the onset（聲母）, i.e. 0-9 plus the q key (group 1).
-- Group 1 rhymes goes with group 1 onsets. Group 2 rhymes goes with group 2 onsets. Thus making full use of the 12 extra keys.
-- Group 1 rhymes are assigned on keys with similar rhymes in group 2. For example, both the keys assigned to eng (L) and to ong (S) in group 2 can be used to input the rhyme oeng in group 1.
-- Like every 雙拼 scheme, redundancy of the syllable table is exploited and multiple rhymes are assigned to the same key. The onset can be used to uniquely determine which rhyme to use. Do not confuse with rhymes in different groups assigned to the same key.
+- The finals（韻母） are separated into two groups: those containing oe/eo/yu plus ip and im (group 1), and the rest(group 2)
+- To obtain a syllable with group 1 finals, you need to use a special set of keys to type the initials（聲母）, i.e. 0-9 plus the q key (group 1).
+- Group 1 finals goes with group 1 initials. Group 2 finals goes with group 2 initials. Thus making full use of the 12 extra keys.
+- Group 1 finals are assigned on keys with similar finals in group 2. For example, both the keys assigned to eng (L) and to ong (S) in group 2 can be used to input the final oeng in group 1.
+- Like every 雙拼 scheme, redundancy of the syllable table is exploited and multiple finals are assigned to the same key. The initials can be used to uniquely determine which final to use. Do not confuse with finals in different groups assigned to the same key.
 - Syllables ending with -p, -t, and -k are mainly assigned to the top and right borders of the 38-key layout, and are assigned on keys near the P, T, K keys, respectively.
-- Syllables with no onset can be typed in either way just as in 小鶴雙拼. For example, ok can be typed with o+ok (O/) or o+k (OK). A special case is the key A. It is always interpreted as aa in the second way described above. For example AT(aa+t) results in the syllable aat, not at. To get at please type A4(aa+at).
-- Some syllables are input by striking the same key twice. This include the following syllables with no onsets: AA(aa), EE(e), OO(o), and the two nasal syllables: MM(m), VV(ng). Note that NG(n+eng) cannot be used to input the syllable ng.
-- Besides the zero-onset syllables stated above, the rhymes ng and m are only used with the onset h to form syllables hm and hng
+- Syllables with no initials can be typed in either way just as in 小鶴雙拼. For example, ok can be typed with o+ok (O/) or o+k (OK). A special case is the key A. It is always interpreted as aa in the second way described above. For example AT(aa+t) results in the syllable aat, not at. To get at please type A4(aa+at).
+- Some syllables are input by striking the same key twice. This include the following syllables with no initials: AA(aa), EE(e), OO(o), and the two nasal syllables: MM(m), VV(ng). Note that NG(n+eng) cannot be used to input the syllable ng.
+- Besides forming syllables by themselves (i.e. no initials), the finals ng and m are only used with the initial h to form syllables hm and hng
 
 # Examples
 - 粵語雙拼輸入法 -> qt qu 0l/0s pk 0u j9 f5
@@ -32,8 +32,8 @@ Besides this readme file that you are reading, there are only 2 files in this re
 # Keyboard Layout
 The keyboard layout for Jyutsoeng can be found at https://upload.wikimedia.org/wikipedia/commons/a/a8/Jyutsoeng.gif.
 Where:
-- Red: Group 1 rhymes and onsets (rhymes on the 1st line, onsets on the 2nd)
-- Blue: Group 2 rhymes and onsets (rhymes on the 3rd line, onsets on the 4th)
+- Red: Group 1 finals and initials (finals on the 1st line, initials on the 2nd)
+- Blue: Group 2 finals and initials (finals on the 3rd line, initials on the 4th)
 - Black: Original key label
 
 # Looks too complicated? Try it out and you'll find that it's easy to learn, and don't forget to leave your comments.
