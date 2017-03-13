@@ -1,0 +1,268 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: jyutsoeng
+  name: 粵語雙拼
+  version: "0.22"
+  author:
+    - William915
+  description: |
+    38鍵無調粵語雙拼方案
+  dependencies:
+    - luna_pinyin
+    - jyutping
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: simplification
+    states: [ 漢字, 汉字 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - selector
+    - punctuator
+    - navigator
+    - fluency_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    #- abc_segmentor
+    - affix_segmentor@myabc
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - script_translator@myabc
+  filters:
+    - simplifier
+    - uniquifier
+      
+key_binder:
+  import_preset: default
+menu:
+  alternative_select_keys: "[]\\'"
+  page_size: 4
+
+speller:
+  alphabet: ";/9876543210zyxwvutsrqpoxnmlkjihgfedcba"
+  delimiter: " "
+  algebra:
+    - erase/^xx$/
+    #- derive/^([jqxy])u$/$1v/
+    - derive/^([eou])([iumnptk])$/$1$1$2/
+    - derive/^([ou])ng$/$1$1ng/
+    - derive/^aa([iumnptk])$/Aaa$1/
+    - xform/^aa([iumnptk])$/A$1/
+    - xform/^a([iumnptk])$/Aa$1/
+    - derive/^aang$/AH/
+    - xform/^aang$/AV/
+    - xform/^ang$/AG/
+    - xform/^([eo])$/$1$1/
+    - xform/^aa$/AA/
+    #- derive/^([aoe])([ioun])$/$1$1$2/
+    #- xform/^([aoe])(ng)?$/$1$1$2/
+    - derive/oe/O/
+    - derive/eo/O/
+    - xform/oe/E/
+    - xform/eo/E/
+    - xform/yu/U/
+    - xform/^j([EOU]|i[mp])/Q$1/
+    - xform/^d([EOU]|i[mp])/1$1/
+    - xform/^t([EOU]|i[mp])/2$1/
+    - xform/^n([EOU]|i[mp])/3$1/
+    - xform/^l([EOU]|i[mp])/4$1/
+    - xform/^g([EOU]|i[mp])/5$1/
+    - xform/^k([EOU]|i[mp])/6$1/
+    - derive/^hng$/7V/
+    - xform/^hng$/hV/
+    - xform/^h([EOUm]|i[mp])/7$1/
+    - xform/^z([EOU]|i[mp])/8$1/
+    - xform/^c([EOU]|i[mp])/9$1/
+    - xform/^s([EOU]|i[mp])/0$1/
+    - xform/^gw/+/
+    - xform/^kw/X/
+    - xform/^ng(.)/V$1/
+    - xform/^([ou])ng$/$1V/
+    - xform/^ng$/VV/
+    - xform/^m$/mm/
+    - xform/(.)aa$/$1A/
+    - xform/(.)aai$/$1D/
+    - xform/(.)aau$/$1C/
+    - xform/(.)aam$/$1M/
+    - xform/(.)aan$/$1J/
+    - xform/(.)aang$/$1H/
+    - xform/(.)aap$/$1P/
+    - xform/(.)aat$/$1%/
+    - xform/(.)aak$/$1*/
+    - xform/(.)ai$/$1R/
+    - xform/(.)au$/$1X/
+    - xform/(.)am$/$1!/
+    - xform/an$/F/
+    - xform/(.)ang$/$1G/
+    - xform/(.)ap$/$1^/
+    - xform/at$/4/
+    - xform/(.)ak$/$1&/
+    - xform/(.)au$/$1X/
+    - xform/(.)ei$/$1W/
+    - xform/^deu$/dV/
+    - xform/^lem$/lV/
+    - xform/eng$/L/
+    - xform/^gep$/g6/
+    - xform/ek$/6/
+    - xform/iu$/Q/
+    - xform/im$/!/
+    - xform/in$/B/
+    - xform/ing$/K/
+    - xform/ip$/9/
+    - xform/it$/3/
+    - xform/(.)ik$/$1>/
+    - xform/(.)oi$/$1;/
+    - xform/(.)ou$/$1Z/
+    - xform/(.)ot$/$1I/
+    - xform/(.)ong$/$1S/
+    - "xform|(.)ok$|$1/|"
+    - xform/(.)on$/$1N/
+    - derive/Eng$/L/
+    - xform/Eng$/S/
+    - derive/Ek$/6/
+    - xform/En$/N/
+    - derive/Ei$/W/
+    - xform/Ei$/;/
+    - xform/(.)Et$/$1I/
+    - derive/^Et$/OT/
+    - xform/^Et$/ET/
+    - "xform|Ek$|/|"
+    - xform/ui$/V/
+    - xform/[uU]n$/Y/
+    - xform/(.)ung$/$1T/
+    - xform/ut$/N/
+    - xform/(.)uk$/$1@/
+    - xform/Ut$/T/
+    - xform/^O$/oe/
+    - xform/^E$/oe/
+    - xlit/!>@$%^&*QWERTYU+IOPASDFGHJKLZXCVBNM/01245978qwertyuriopasdfghjklzxcvbnm/
+    #- abbrev/^(.).+$/$1/
+
+translator:
+  dictionary: jyutping
+  prism: jyutsoeng
+
+myabc:
+  tag: myabc
+  dictionary: jyutping
+  prism: jyutsoeng
+  preedit_format:
+    - xform/([012567])o/$1oe/
+    - xform/([012567])e/$1oe/
+    -  xform/([bpmfgw])y/$1un/
+    -  xform/([q0-9])y/$1yun/
+    -  xform/([q890])u/$1yu/
+    -  xform/([gh])i/$1ot/
+    -  xform/([134890])i/$1eot/
+    -  xform/a/aa/
+    -  xform/([dtnlgvhzcs])m/$1aam/
+    -  xform/([q0-9])0/$1im/
+    -  xform/([bpmfdtnlgkhzcsju])t/$1uŋ/
+    -  xform/([q0124-9])t/$1yut/
+    -  xform/([bpmfkw])n/$1ut/
+    -  xform/([ghvo])n/$1on/
+    -  xform/([q124890])n/$1eon/
+    -  xform/([bpmtnlgkhrwzcsj])k/$1iŋ/
+    -  xform/([bpmdtnlgkhzcsj])q/$1iu/
+    -  xform/([dtnlghzcsa])p/$1aap/
+    -  xform/hv/hŋ/
+    -  xform/7v/hŋ/
+    -  xform/(\w)2/$1uk/
+    -  xform/([bpmfgkw])v/$1ui/
+    -  xform/dv/deu/
+    -  xform/lv/lem/
+    -  xform/([pdtnlgkvhzcso]);/$1oi/
+    -  xform/([q0-9]);/$1eoi/
+    -  xform/([bpmfdnlgkhse])w/$1ei/
+    -  xform/([q0-9])w/$1eoi/
+    -  xform/([bpdtlkhzcs])6/$1ek/
+    -  xform/g6/gep/
+    -  xform/([1456890])6/$1oek/
+    -  "xform|([bpmfdtnlgkvhriwzcso])/|$1ok|"
+    -  "xform|([1456890])/|$1oek|"
+    -  xform/([bpmfdtnlgkvhriwzcso])s/$1oŋ/
+    -  xform/([q03-9])s/$1oeŋ/
+    -  xform/([bpmdtlghzcsj])l/$1eŋ/
+    -  xform/([q03-9])l/$1oeŋ/
+    -  xform/(\w)z/$1ou/
+    -  xform/(\w)1/$1ik/
+    -  xform/(\w)3/$1it/
+    -  xform/([q0-5789])9/$1ip/
+    -  xform/([dnlgkvhzcsja])9/$1ap/
+    -  xform/(\w)b/$1in/
+    -  xform/(\w)7/$1ak/
+    -  xform/(\w)4/$1at/
+    -  xform/(\w)g/$1aŋ/
+    -  xform/(\w)f/$1an/
+    -  xform/([bdtnlgkvhzcsja])0/$1am/
+    -  xform/(\w)x/$1au/
+    -  xform/(\w)r/$1ai/
+    -  xform/(\w)8/$1aak/
+    -  xform/(\w)5/$1aat/
+    -  xform/(\w)h/$1aaŋ/
+    -  xform/(\w)j/$1aan/
+    -  xform/(\w)c/$1aau/
+    -  xform/(\w)d/$1aai/
+    -  xform/([eou])\1(\w|ŋ)/$1$2/
+    -  xform/([aeiou])v/$1ŋ/
+    -  "xform/vv/ŋ'/"
+    -  "xform/(^|[ '])v/$1ŋ/"
+    -  "xform/(^|[ '])x/$1kw/"
+    -  "xform/(^|[ '])r/$1gw/"
+    -  "xform/(^|[ '])q/$1j/"
+    -  "xform/(^|[ '])1/$1d/"
+    -  "xform/(^|[ '])2/$1t/"
+    -  "xform/(^|[ '])3/$1n/"
+    -  "xform/(^|[ '])4/$1l/"
+    -  "xform/(^|[ '])5/$1g/"
+    -  "xform/(^|[ '])6/$1k/"
+    -  "xform/(^|[ '])7/$1h/"
+    -  "xform/(^|[ '])8/$1z/"
+    -  "xform/(^|[ '])9/$1c/"
+    -  "xform/(^|[ '])0/$1s/"
+    -  "xform/(^|[ '])gwu*ŋ/$1uŋ/"
+    -  "xform/(^|[ '])gwu*k/$1uk/"
+    -  xform/aaaa(\w|[0-9]|ŋ)/aa$1/
+    -  "xform/(^|[ '])aaaa/$1aa'/"
+    -  xform/aaa(\w|[0-9]|ŋ)/a$1/
+    -  "xform/(^|[ '])mm/$1m'/"
+    -  "xform/(^|[ '])ee/$1e'/"
+    -  "xform/(^|[ '])oo/$1o'/"
+    -  "xform/(^|[ '])et/$1eot/"
+    -  "xform/(^|[ '])ot/$1eot/"
+
+reverse_lookup:
+  dictionary: luna_pinyin
+  prefix: "`"
+  suffix: "'"
+  tips: 〔拼音〕
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+punctuator:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"
+    myabc: "^(([0-9a-z].)*[^0-9a-z`]+){0,}\\K([0-9a-z].)*[0-9a-z]?"

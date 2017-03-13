@@ -1,0 +1,13 @@
+patch:
+  "engine/processors":
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - fluency_editor
+  menu:
+    alternative_select_keys: "ABCDEFGHIJ"
+    page_size: 8
