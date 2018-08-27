@@ -1,13 +1,6 @@
 patch:
-  "engine/processors":
-    - ascii_composer
-    - recognizer
-    - key_binder
-    - speller
-    - punctuator
-    - selector
-    - navigator
-    - fluency_editor
-  menu:
-    alternative_select_keys: "ABCDEFGHIJ"
-    page_size: 8
+  style:
+    key_text_size: 15
+    key_long_text_size: 13
+    symbol_text_size: 13
+
