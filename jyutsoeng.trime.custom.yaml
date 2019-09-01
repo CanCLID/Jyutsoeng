@@ -166,7 +166,7 @@ patch:
     - {click: '.', long_click: '>'}
     - {click: '/', long_click: '?', hint: 'ok'}
     - {click: Shift_L}
-    - {click: '{keyToSymbols}', long_click: keyToNumbers}
+    - {click: Keyboard_symbols, long_click: Keyboard_number}
     - {click: Mode_switch, long_click: Menu}
     - {click: space, long_click: Tab, swipe_down: Escape, width: 30}
     - {click: "'", has_menu: DeleteCandidate, long_click: '"'}
